@@ -1,9 +1,6 @@
 # locaboo-test
 
-<!--
-    This is default Vue 3 CLI
-    Paul.
--->
+## This is default Vue 3 CLI project, Paul.
 
 This template should help get you started developing with Vue 3 in Vite.
 
