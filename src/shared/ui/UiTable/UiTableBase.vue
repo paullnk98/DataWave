@@ -2,7 +2,9 @@
 import { computed, ref } from 'vue'
 import { VDataTable } from 'vuetify/components'
 
-import UiTableHeader from '@/shared/ui/UiTable/UiTableHeader/UiTableHeader.vue'
+import UiTableTop from '@/shared/ui/UiTable/UiTableTop/UiTableTop.vue'
+import UiTableSearch from '@/shared/ui/UiTable/UiTableSearch/UiTableSearch.vue'
+import UiTableFilters from '@/shared/ui/UiTable/UiTableFilters/UiTableFilters.vue'
 import UiTableHeadItem from '@/shared/ui/UiTable/UiTableHeadItem/UiTableHeadItem.vue'
 import UiTableFooter from '@/shared/ui/UiTable/UiTableFooter/UiTableFooter.vue'
 import type { TableHeadItem, TableFilter } from '@/shared/ui/UiTable/UiTableCommon'
@@ -29,12 +31,10 @@ const pageCount = computed(() => Math.ceil(props.items.length / itemsPerPage.val
 
 <template>
   <div class="table">
-    <UiTableHeader
-      :hasSearch="hasSearch"
-      :filters="headerFilters"
-      v-model:search="searchValue"
-      @filterBy="emit('filterBy', $event)"
-    />
+    <UiTableTop>
+      <UiTableSearch v-if="hasSearch" v-model:search="searchValue" />
+      <UiTableFilters :filters="headerFilters" @filterBy="emit('filterBy', $event)" />
+    </UiTableTop>
 
     <VDataTable
       class="table__inner"
